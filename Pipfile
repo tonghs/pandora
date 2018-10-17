@@ -19,6 +19,8 @@ raven = {version = "==6.9.0", extras = ["flask"]}
 mysqlclient = "==1.3.13"
 flask-caching = "==1.4.0"
 fire = "==0.1.3"
+Flask-Mako = "==0.4"
+mako = "==1.0.7"
 
 [dev-packages]
 mypy = "==0.610"
