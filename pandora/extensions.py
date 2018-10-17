@@ -5,7 +5,6 @@ from flask.json import JSONEncoder
 from raven.contrib.flask import Sentry
 
 from pandora import config
-from pandora.core.cache import PandoraCache
 from pandora.core.db import MyRetryDB
 
 
@@ -31,10 +30,3 @@ sentry = Sentry()
 # # 捕捉 celery 报错到 sentry
 # sentry_client = SentryClient()
 # register_signal(sentry_client)
-
-CACHE_CONFIG = dict(
-    CACHE_TYPE=config.CACHE_TYPE,
-    CACHE_KEY_PREFIX=config.CACHE_KEY_PREFIX,
-    CACHE_REDIS_URL=config.CACHE_REDIS_URL,
-)
-cache = PandoraCache(config=CACHE_CONFIG)

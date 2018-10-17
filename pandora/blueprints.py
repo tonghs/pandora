@@ -1,12 +1,13 @@
 from flask import g, request
 
 from pandora.core.my_blueprint import MyBlueprint
-from pandora.views.utils.check_sign import check_sign
 
 
-def _factory(module_path, url_prefix):
+def _factory(module_path, url_prefix, is_api=True):
     import_name = f'pandora.views.{module_path}'
-    bp = MyBlueprint(module_path, import_name, url_prefix=f'/api/v1{url_prefix}')
+    url_prefix = f'/api/v1{url_prefix}' if is_api else url_prefix
+    print(import_name, url_prefix)
+    bp = MyBlueprint(module_path, import_name, url_prefix=url_prefix)
 
     @bp.before_request
     def set_variables():
@@ -15,12 +16,13 @@ def _factory(module_path, url_prefix):
         else:
             request_data = request.values.to_dict()
 
-        check_sign(request_data)
-
         g.request_data = request_data
 
     return bp
 
 
+index_blueprint = _factory('index', '', is_api=False)
+
 all_blueprints = [
+    index_blueprint
 ]
