@@ -1,0 +1,14 @@
+version: "2.2"
+services:
+  test:
+    command: bash -c 'pipenv install --skip-lock pytest && pipenv run python manage.py create_database && pipenv run py.test --cache-clear -vv -s tests/'
+    depends_on:
+      - db
+    environment:
+      ENV: test
+      USER: root
+    build:
+      context: .
+      cache_from:
+        - registry.xiachufang.com/xiachufang/pandora:latest
+    image: registry.xiachufang.com/${USER}/pandora:latest

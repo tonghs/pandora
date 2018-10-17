@@ -1,0 +1,15 @@
+version: "2.2"
+services:
+  app:
+    depends_on:
+      - db
+    environment:
+      ENV: dev
+      USER: root
+    build:
+      context: .
+      cache_from:
+        - registry.xiachufang.com/xiachufang/pandora:latest
+    image: registry.xiachufang.com/${USER}/pandora:latest
+    ports:
+      - "9999:9999"

@@ -1,0 +1,21 @@
+language: python
+python:
+  - 3.6
+
+sudo: false
+dist: trusty
+
+install:
+  - pip install pipenv
+  - pipenv install --deploy --dev
+
+addons:
+  hosts:
+    - pandora-db-01
+
+env:
+  - ENV=dev
+
+script:
+  - make lint-mypy
+  - make test
