@@ -793,6 +793,7 @@ throw new Error('AdminLTE requires jQuery')
       $('body').addClass(ClassName.open)
         .trigger($.Event(Event.expanded));
     }
+    setFrameSize()
   };
 
   PushMenu.prototype.close = function () {
@@ -804,6 +805,7 @@ throw new Error('AdminLTE requires jQuery')
       $('body').removeClass(ClassName.open + ' ' + ClassName.collapsed)
         .trigger($.Event(Event.collapsed));
     }
+    setFrameSize()
   };
 
   PushMenu.prototype.expandOnHover = function () {
@@ -837,6 +839,7 @@ throw new Error('AdminLTE requires jQuery')
   // ==========================
   function Plugin(option) {
     return this.each(function () {
+
       var $this = $(this);
       var data  = $this.data(DataKey);
 

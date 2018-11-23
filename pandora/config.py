@@ -18,5 +18,5 @@ DB_HOST = 'pandora-db-01'
 DB_NAME = os.getenv('DB_NAME', 'pandora')
 DB_PORT = 3306
 DB_USER = os.getenv('DB_USER', 'xcf')
-DB_PASSWORD = os.getenv('DB_PASSWORD', 'xcf')
+DB_PASSWORD = os.getenv('DB_PASSWORD', 'xcf@xiachufang.com')
 DB_CHARSET = 'utf8mb4'
